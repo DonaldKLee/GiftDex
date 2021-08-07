@@ -41,10 +41,14 @@ def form():
     for category in categories:
         cleaned_categories.append(category.strip(" "))
     categories = cleaned_categories
-    # Removes spaces in categories ^^^
 
     budget = request.form['budget']
-    
+    products = webscrapping.find_products(categories, budget)
+    # Removes spaces in categories ^^^
+
+    print(products)
+
+
     return render_template('index.html', categories=str(categories))
 
 if __name__ == "__main__":  

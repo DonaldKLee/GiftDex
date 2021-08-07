@@ -67,14 +67,11 @@ body {
 }
 
 
-input {
-    border:none;
-    border-radius: 5px;
-}
-
-.text_box {
+.text_box { /*Input field form*/
     height: 35px;
     font-size: 1em;
     line-height: 17.5px;
     box-shadow: 0px 5px 5px rgba(75, 93, 104, 0.1);
+    border: none;
+    border-radius: 5px;
 }
