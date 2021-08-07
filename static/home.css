@@ -1,3 +1,26 @@
 body {
-    background: lightblue;
+    background: #F8FBFD;
 }
+
+.submit_button {
+    background: #FFFFFF;
+    box-shadow: 0px 5px 5px rgba(75, 93, 104, 0.1);
+    border-radius: 50px;
+    width: 200px;
+    height: 40px;
+    border:none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.submit_button:hover {
+    background: #212353;
+    color: white;
+}
+
+
+input {
+  border: 2px solid black;
+  border-radius: 5px;
+}
+

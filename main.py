@@ -27,9 +27,24 @@ def dated_url_for(endpoint, **values):
 @app.route('/')
 def index(): # Home page
     modeltrainer.train()
-    print(predictions.predict(17,0))
+    
     return render_template('index.html')
 
+@app.route('/', methods=['POST'])
+def form():
+    age = request.form['age']
+    gender = request.form['gender']
+    categories = predictions.predict(age,gender)
+
+    # Removes spaces in categories
+    cleaned_categories = []
+    for category in categories:
+        cleaned_categories.append(category.strip(" "))
+    categories = cleaned_categories
+    # Removes spaces in categories ^^^
+
+    #budget = request.form['budget']
+    return render_template('index.html', categories=str(categories))
 
 if __name__ == "__main__":  
 	app.run( 

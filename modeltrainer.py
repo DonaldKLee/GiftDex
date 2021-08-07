@@ -1,8 +1,7 @@
-import pandas as pd
-from sklearn.tree import DecisionTreeClassifier
-import joblib
-
 def train():
+    import pandas as pd
+    from sklearn.tree import DecisionTreeClassifier
+    import joblib
     data = pd.read_csv("static/survey.csv")
 
     cleaned_data = data.drop(columns=['Timestamp']) # Remove the timestamp from the data
