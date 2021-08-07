@@ -26,8 +26,6 @@ def dated_url_for(endpoint, **values):
 
 @app.route('/')
 def index(): # Home page
-    modeltrainer.train()
-    
     return render_template('index.html')
 
 @app.route('/', methods=['POST'])
@@ -43,13 +41,18 @@ def form():
     categories = cleaned_categories
 
     budget = request.form['budget']
-    products = webscrapping.find_products(categories, budget)
+    interests = request.form['interests']
+
+    if interests:
+        interests = interests.split(',')
+        print(interests)
+
+    products = webscrapping.find_products(categories, budget, interests)
     # Removes spaces in categories ^^^
 
-    print(products)
+    #print(products)
 
-
-    return render_template('index.html', categories=str(categories))
+    return render_template('index.html', products=products)
 
 if __name__ == "__main__":  
 	app.run( 

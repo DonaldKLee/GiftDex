@@ -2,7 +2,7 @@
 <html>
     
 <head>
-    <title>Giftbase</title>
+    <title>Giftdex</title>
     <link rel="stylesheet" href="{{ url_for('static', filename="home.css") }}"
 </head>
 
@@ -15,10 +15,12 @@
     </div>
 
     <div class="right">
+
+        
         <form action="{{ url_for('form') }}" method="POST">
-            <label class="form_labe">Age</label></br><input type="number" class="text_box" min="0" max="120" step="1" name="age" value="1" placeholder="120"/>
+            <label class="form_labe">Age</label></br><input type="number" class="text_box" min="0" max="120" step="1" name="age" value="" placeholder="20"/>
             </br></br>
-            <label>Budget</label></br><label>$ </label><input type="number" class="text_box" min="5" step="1" name="budget" value="5" placeholder="5"/>
+            <label>Budget</label></br><label>$ </label><input type="number" class="text_box" min="5" step="1" name="budget" value="" placeholder="10"/>
             
             
             <p>Gender</p>
@@ -33,20 +35,27 @@
 
             </br></br></br>
 
-
+            <label>What is something they like? (Eg. anime, headphones, flowers)</label></br><input type="text" class="text_box" name="interests" value="" placeholder="anime, headphones"/>
+            
+            </br></br>
             <input type="submit" class="submit_button" name="submit" value="Find Gifts for me!" />
-        
-        
         
         </form>
     </div>
 </div>
 
 
-
-{% if categories %}
-    <h1>{{ categories }}</h1>
-{% endif %}
+<div class="product_container">
+    {% if products %}
+        {% for product in products %}
+            <div class="product">
+                <p>{{ product['name'] }}</p>
+                <a href="{{ product['url'] }}">View Site</a>
+                <p>{{ product['price'] }}</p>
+            </div>
+        {% endfor %}
+    {% endif %}
+</div>
 
 </body>
 
