@@ -1,6 +1,8 @@
 import random, os
 from flask import Flask, render_template, url_for, request
 
+import modeltrainer, predictions, webscrapping
+
 #Sets up the flask app
 app = Flask(
 	__name__,
@@ -24,6 +26,8 @@ def dated_url_for(endpoint, **values):
 
 @app.route('/')
 def index(): # Home page
+    modeltrainer.train()
+    print(predictions.predict(17,0))
     return render_template('index.html')
 
 
@@ -33,4 +37,4 @@ if __name__ == "__main__":
     #Starts the website
 	host='0.0.0.0',  #Sets the host, required for repl to detect the site
 	port=random.randint(2000, 9000)  #Randomly select the port the machine hosts on.
-)
+    )
