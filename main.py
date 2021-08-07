@@ -43,7 +43,8 @@ def form():
     categories = cleaned_categories
     # Removes spaces in categories ^^^
 
-    #budget = request.form['budget']
+    budget = request.form['budget']
+    
     return render_template('index.html', categories=str(categories))
 
 if __name__ == "__main__":  

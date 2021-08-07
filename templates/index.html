@@ -2,37 +2,50 @@
 <html>
     
 <head>
-    <title>Giftsy</title>
+    <title>Giftbase</title>
     <link rel="stylesheet" href="{{ url_for('static', filename="home.css") }}"
 </head>
 
 <body>
-    <h1>Giftsy</h1>
 
-<form action="{{ url_for('form') }}" method="POST">
+<div class="toppage">
+    <div class="left">
+        <h3 class="slogan">Finding Gifts</br>Made Easy</h3>
+        <p class="description">Are you struggling to find the perfect gift?</br></br>We find presents for you so you don’t have to!</p>
+    </div>
 
-    <label>Age: </label><input type="number" min="0" max="120" step="1" name="age" value="1" placeholder="120"/>
+    <div class="right">
+        <form action="{{ url_for('form') }}" method="POST">
+            <label class="form_labe">Age</label></br><input type="number" class="text_box" min="0" max="120" step="1" name="age" value="1" placeholder="120"/>
+            </br></br>
+            <label>Budget</label></br><label>$ </label><input type="number" class="text_box" min="5" step="1" name="budget" value="5" placeholder="5"/>
+            
+            
+            <p>Gender</p>
+            
 
-    </br></br>
+            
+            <input type="radio" id="male" name="gender" value="1">
+            <label for="male">Male</label>
+            </br>
+            <input type="radio" id="female" name="gender" value="0">
+            <label for="female">Female</label>
+            </br>
+            <input type="radio" id="other" name="gender" value="3">
+            <label for="other">Other</label>
+            </br>
+            <input type="radio" id="prefer_not_to_say" name="gender" value="4">
+            <label for="prefer_not_to_say">Prefer not to say</label>
+            <p></p>
+            <input type="submit" class="submit_button" name="submit" value="Find Gifts for me!" />
 
-    <label>Budget: $ </label><input type="number" min="5" step="1" name="budget" value="5" placeholder="5"/>
-    
+        
+        
+        </form>
+    </div>
+</div>
 
-    <p>Gender:</p>
-    <input type="radio" id="male" name="gender" value="1">
-    <label for="male">Male</label>
-    </br>
-    <input type="radio" id="female" name="gender" value="0">
-    <label for="female">Female</label>
-    </br>
-    <input type="radio" id="other" name="gender" value="3">
-    <label for="other">Other</label>
-    </br>
-    <input type="radio" id="prefer_not_to_say" name="gender" value="4">
-    <label for="prefer_not_to_say">Prefer not to say</label>
-    <p></p>
-    <input type="submit" class="submit_button" name="submit" value="Submit" />
-</form>
+
 
 {% if categories %}
     <h1>{{ categories }}</h1>
