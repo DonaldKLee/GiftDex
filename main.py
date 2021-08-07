@@ -45,12 +45,11 @@ def form():
 
     if interests:
         interests = interests.split(',')
-        print(interests)
 
     products = webscrapping.find_products(categories, budget, interests)
     # Removes spaces in categories ^^^
 
-    #print(products)
+    print(products)
 
     return render_template('index.html', products=products)
 

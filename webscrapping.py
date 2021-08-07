@@ -39,19 +39,18 @@ def find_products(categories, budget, interests):
 
                     product_price = div.find("span", class_="a8Pemb").text
                     
-                    # product_img = WIP
+                    product_img = div.find("img").get("src")
 
                     price = product_price.replace("$", "").replace(",", "")
     
                     if float(price) <= float(budget): # Product is within our budget
                         product_url = "https://www.google.com" + div.find("a", class_="xCpuod").get("href")
-                        about_product = [product_name, product_price, product_url]
+                        about_product = [product_name, product_price, product_url, product_img]
                         
                         about_product = {
                             "name": product_name,
                             "price": product_price,
-                            "url": product_url
-                            # "image": product_img
+                            "url": product_url,
                         }
 
                         products.append(about_product)

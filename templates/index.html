@@ -3,6 +3,10 @@
     
 <head>
     <title>Giftdex</title>
+
+    <link rel="shortcut icon" href="{{ url_for('static', filename='logo.png') }}">
+
+    <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet'>
     <link rel="stylesheet" href="{{ url_for('static', filename="home.css") }}"
 </head>
 
@@ -11,19 +15,19 @@
 <div class="toppage">
     <div class="left">
         <h3 class="slogan">Finding Gifts</br>Made Easy</h3>
-        <p class="description">Are you struggling to find the perfect gift?</br></br>We find presents for you so you don’t have to!</p>
+        <p class="description">Whether you are finding a gift for a friend, family member, or someone you are meeting for the first time, we often struggle with finding the perfect gift. </br></br>GiftDex uses AI to find the perfect gifts for you, so you don’t have to!</p>
     </div>
 
     <div class="right">
 
         
         <form action="{{ url_for('form') }}" method="POST">
-            <label class="form_labe">Age</label></br><input type="number" class="text_box" min="0" max="120" step="1" name="age" value="" placeholder="20"/>
+            <label class="form_label">Age</label></br><input type="number" class="text_box" min="0" max="120" step="1" name="age" value="" placeholder="20"/ required>
             </br></br>
-            <label>Budget</label></br><label>$ </label><input type="number" class="text_box" min="5" step="1" name="budget" value="" placeholder="10"/>
+            <label class="form_label">Budget</label></br><label class="form_label">$ </label><input type="number" class="text_box" min="5" step="1" name="budget" value="" placeholder="10"/ required>
             
             
-            <p>Gender</p>
+            <p class="form_label">Gender</p>
     
             <select class="text_box" name="gender" id="gender" required>
                 <option value="">Select your gender</option>
@@ -35,7 +39,7 @@
 
             </br></br></br>
 
-            <label>What is something they like? (Eg. anime, headphones, flowers)</label></br><input type="text" class="text_box" name="interests" value="" placeholder="anime, headphones"/>
+            <label class="form_label">What is something they like? (Seperate interests with commas)</label></br><input type="text" class="text_box" name="interests" value="" placeholder="Anime, Headphones"/>
             
             </br></br>
             <input type="submit" class="submit_button" name="submit" value="Find Gifts for me!" />
@@ -50,7 +54,7 @@
         {% for product in products %}
             <div class="product">
                 <p>{{ product['name'] }}</p>
-                <a href="{{ product['url'] }}">View Site</a>
+                <a href="{{ product['url'] }}" target="_blank">View Site</a>
                 <p>{{ product['price'] }}</p>
             </div>
         {% endfor %}
