@@ -1,0 +1,78 @@
+/*Light mode colours*/
+::selection {
+  background: black;
+  color:white;
+}
+
+.theme_btn {background: #E5E5E5;}
+
+.theme_btn:hover {
+	background: #333333;
+}
+.theme_btn:hover .theme_moon{
+	color:white;
+}
+
+#theme_moon {display:block;}
+#theme_sun {display:none;}
+
+
+body, #top_nav_bar, #vertical_nav_bar {background:#FFFFFF;}
+
+.mylogo {
+	filter: invert(0%); /*Makes the logo black*/
+}
+.lines, .side_left_line, .side_right_line, .footer_logo_lines {
+	background: black; /*Colour of the hamburger bars*/
+}
+
+.theme_text, .white_btn, .nav_sections, .nav_links, .ham_li_nav_sections, .accordion_heading, .project_filter_item, .accordion:after {
+	color:black;
+	transition: 0.3s;
+}
+.rectangle_btn {
+	border-color: black;
+	color:black
+}
+.home_rounded_image {border-color: black;}
+.home_button_link:hover, .white_btn:hover {
+	background:black;
+	color:white;
+}
+.footer_email:hover, .white_btn:hover {
+	background:black;
+	color:white;
+}
+
+@keyframes blink {
+	from, to { 
+		background-color: transparent 
+	}
+	50% { 
+		background-color: black; 
+	}
+}
+
+
+.accordion_pop_up {
+	background-color: #F4F4F4;
+}
+
+.accordion, .accordion_top_bottom, .project_filter, .project {
+	background: #E5E5E5;
+}
+
+.project_filter li.project_filter_active, .project_filter li:hover{
+	color: white; /*White on both themes*/
+}
+
+.side_social_media_logo {color:black;}
+
+.accordion_top_bottom:nth-last-child(1) {border-top: 1px solid black;}
+.accordion {border-top: 1px solid black;}
+
+.project_logo_colour {color:black}
+.project_logo_colour:hover {color:#3988FF}
+
+
+

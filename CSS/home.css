@@ -1,0 +1,408 @@
+/*CSS for the home page*/
+.top_of_page {
+	position:absolute;
+	top:0;
+}
+/*Top Page*/
+.top_page_home {
+	position:relative;
+	display:block;
+	min-height:80vh;
+	margin:0 auto;
+	width:70%;
+	top:0vh;
+	z-index:1;
+}
+
+.profile_picture_container {
+	display:block;
+	position:relative;
+	text-align:center;
+	margin-top:18.5em;
+}
+.home_rounded_image { /*Profile Picture*/
+	border-radius: 50%;
+	width:12em;
+	height:12em;
+	border-style: solid;
+	border-width: 2px;
+}
+
+
+.home_my_name_is {
+	font-size:1.5em;
+	margin-bottom:-40px;
+}
+
+.home_name { /*Donald Lee*/
+	font-size:4em;
+	font-weight: bold;
+	margin-bottom:15px;
+}
+
+.changing_home_text {
+	display: inline !important;
+}
+
+#blinking_line {
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+	right:10px;
+	width: 3px;
+	height: 50px;
+	animation: blink .75s step-end infinite;
+}
+
+.home_button_link { /*Text in the get in touch button*/
+	margin-top:30px;
+}
+.home_button_link:hover, .get_in_touch:hover {
+
+}
+.get_in_touch {
+
+}
+
+/*About Page*/
+.about_page {
+	position:relative;
+	display:block;
+	width:100%;
+	margin:0 auto;
+	width:70%;
+	height:auto;
+	margin-bottom:5em;
+}
+
+.about_intro_text {
+	line-height: 1.6;
+}
+.knowledge_title {
+	font-weight: bold;
+}
+
+.knowledge_container {
+	display:grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px , 1fr));
+}
+.seperate_knowledge_container {
+	padding-right:40px;
+}
+.knowledge_column_title {
+	font-size:1.75em;
+}
+.knowledge_list_item {
+	font-size:1.7em;
+	list-style-type:'➤ ';
+}
+.knowledge_list_item_indent {
+	padding-left:2em;
+}
+.nested_knowledge_points {
+	list-style-type:'➼ ';
+}
+
+/*Experience Page*/
+.experience_page {
+	position:relative;
+	display:block;
+	width:100%;
+	margin:0 auto;
+	width:70%;
+	z-index:1;
+	height:auto;
+	margin-bottom:5em;
+}
+.accordion_top_bottom {
+	padding: 25px 0px;
+	width: 100%;
+}
+.accordion_top_bottom:nth-child(1) {
+	border-radius: 15px 15px 0px 0px;
+}
+.accordion_top_bottom:nth-last-child(1) {
+	border-radius: 0px 0px 15px 15px;
+}
+
+.accordion {
+	cursor: pointer;
+	padding: 10px;
+	height:60px;
+	width: 100%;
+	text-align: left;
+	outline: none;
+	border:none;
+	transition: 0.4s;
+}
+.accordion:hover {
+	background:#3988FF;
+	transition: 0.4s;
+}
+
+.active_blue {
+	background:#3988FF !important;
+}
+.active >  .accordion_heading {
+	color: white !important;
+}
+
+.accordion:after {
+	content: '\002B';
+	font-weight: bold;
+	line-height:45px;
+	float: right;
+	position:relative;
+	right:1em;
+	display:block;
+	transform: rotate(0deg);
+	transition:0.4s;
+	animation: plus_to_minus 0.4s;
+	font-size:1.625em; /*Symbol*/
+}
+
+.active:after {
+  content: "\2212";
+  animation: minus_to_plus 0.4s;
+}
+@keyframes minus_to_plus {
+	from {display:block; transform: rotate(-270deg);}
+	to {display:none; transform: rotate(0deg);}
+}
+
+@keyframes plus_to_minus {
+	from {display:block; transform: rotate(-270deg);}
+	to {display:none; transform: rotate(0deg);}
+}
+
+.accordion_heading {
+	line-height:45px;
+	margin-left:20px;
+}
+
+.accordion_pop_up {
+	padding: 0 18px;
+	max-height: 0;
+	overflow: hidden;
+}
+.accordion_pop_up_transition {
+	transition: max-height 0.3s ease-out;
+}
+
+.accordion_content {
+	padding:20px;
+}
+
+.about_role {
+	line-height: 1.6;
+}
+
+.experience_links {
+	color:#3988FF; 
+	transition:0.3s; 
+}
+.experience_links:hover {
+	color:#136DF3;
+	text-decoration:none;
+}
+
+.projects_page {
+	position:relative;
+	display:block;
+	margin:0 auto;
+	width:70%;
+	z-index:1;
+	margin-bottom:10em;
+}
+.projects_intro_text {
+	margin-top:-20px;
+	line-height: 1.6;
+}
+.project_filter {
+	height:auto;
+	border-radius:30px;
+	margin-bottom:40px;
+	list-style-type: none;
+	padding: 1px;
+	display:block;
+}
+.project_filter_item {
+	position:relative;
+	display: inline-block;
+	font-size: 1.2em;
+	line-height: 40px;
+	text-align: center;
+	border-radius: 25px;
+	cursor: pointer;
+	transition:all 0.3s ease-in-out;
+	margin: 5px 5px;
+	width:130px;
+	padding:0px 10px;
+}
+
+.project_filter li.project_filter_active, .project_filter li:hover{
+	background: #3988FF !important;
+}
+
+.projects_container {
+	position:relative;
+	width:100%;
+	display:grid;
+	grid-gap:60px;
+	justify-items: center;
+	grid-template-columns: repeat(auto-fit, minmax(300px , 1fr));
+	margin:0 auto;
+}
+
+.project {
+	overflow: hidden;
+	width:350px;
+	border-radius:15px;
+	box-shadow: 0 0 0px #000000;
+}
+.project:hover {
+	 box-shadow: 0 0 20px #000000;
+	 transition:0.3s;
+}
+.project_image_container {
+	object-fit: cover;
+	width:100%;
+	max-height:200px;
+	overflow:hidden;
+	transition:0.3s;
+}
+.projects_image {
+	width:100%;
+	height:auto;
+	transform: scale(1.1);
+	transition:0.3s;
+}
+.project:hover .projects_image {
+	transform: scale(1);
+	transition:0.3s;
+}
+.about_project_section {
+	padding:20px 20px 0px 20px;
+}
+.project_name {
+	font-size:1.3em;
+	font-weight:bold;
+}
+.about_project {
+	font-size:1.2em;
+	margin-bottom:30px;
+}
+.project_buttons { /*ul*/
+	padding:0;
+	list-style-type:none;
+}
+.project_buttons_li {
+	display:inline-block;
+	margin:10px auto;
+}
+.project_learn_more {
+	width:120px;
+	border-radius:15px;
+	padding:10px;
+	background: #3988FF;
+	transition:0.3s;
+	/*animation: reverse_flip 0.3s;*/
+}
+
+@keyframes reverse_flip {
+  from {
+	transform: scaleX(1);
+	}
+  to {
+	transform: scaleX(-1);
+	 }
+}
+
+.project:hover .project_learn_more {
+	cursor:pointer;
+	animation: flip_learn_more 0.3s;
+}
+
+.project_learn_more:hover {background:#136DF3;}
+
+@keyframes flip_learn_more {
+  from {
+	transform: scaleX(-1);
+	}
+  to {
+	transform: scaleX(1);
+	 }
+}
+
+
+.project_learn_more_text {
+	color:white;
+	font-size:1.2em;
+	text-decoration:none;
+	vertical-align:middle;
+	text-align:center;
+	display: inline-block;
+	width: 100%;
+}
+.project:hover .project_learn_more_text {
+	visibility:hidden;
+	display:none;
+}
+
+
+
+.fa-angle-double-right {
+	font-size: 1em;
+	vertical-align:middle;
+	color: white;
+	visibility:hidden;
+	position: relative;
+	left:80%;
+	position: absolute;
+}
+
+.project:hover .fa-angle-double-right {
+	visibility:visible;
+	position:relative;
+	animation: right_arrow 0.6s;
+}
+
+@keyframes right_arrow {
+  from {
+	opacity: 0;
+	left:0px;
+	}
+  to {
+	opacity: 1;
+	left:80%;
+	 }
+}
+
+.project_website_logo {
+	font-size:1.8em;
+	transition:0.4s;
+	margin-left:10px;
+	vertical-align:middle;
+}
+.project_website_logo:hover {
+	color: #9C9C9C;
+}
+.project_github_logo {
+	font-size:1.8em;
+	transition:0.4s;
+	margin-left:10px;
+	vertical-align:middle;
+}
+.project_github_logo:hover {
+	color: #9C9C9C;
+}
+.project_discord_logo {
+	font-size:1.8em;
+	transition:0.4s;
+	margin-left:10px;
+	vertical-align:middle;
+	color:#7289d9; 
+}
+.project_discord_logo:hover {
+	color: #4c6ef5;
+}

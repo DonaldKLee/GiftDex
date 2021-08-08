@@ -1,0 +1,55 @@
+/*Universal text fonts*/
+body {
+	margin: 0;
+	overflow-x:hidden;
+	font-family: monospace;
+	transition: 0.5s;
+}
+.section_titles {
+	font-size:3em;
+	font-weight: bold;
+	display: inline-block;
+	vertical-align: middle;
+	letter-spacing: 2px;
+	z-index:2;
+}
+
+.body_text {
+	font-size:1.4em;
+	font-family: Arial, Helvetica, sans-serif;
+	z-index:2;
+}
+.theme_light_blue {
+	color: #3988FF;
+}
+.white_btn { 
+	border-style: solid;
+	border-width: 1px;
+	text-decoration:none;
+	text-align: center;
+	font-size:1.2em;
+	width:200px;
+	height:auto;
+	display:block;
+}
+
+.home_button_link:hover, .white_btn:hover {
+	font-weight:bold;
+}
+
+.footer_email:hover, .white_btn:hover {
+	font-weight:bold;
+}
+
+@media only screen and (max-width: 1000px) { 
+	.section_titles {
+		font-size:2em;
+	}
+	.body_text {
+		font-size:1em;
+	}
+	.white_btn {
+		font-size:1em;
+		width:180px;
+	}
+}
