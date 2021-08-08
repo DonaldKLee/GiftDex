@@ -26,12 +26,13 @@ def dated_url_for(endpoint, **values):
 
 @app.route('/')
 def index(): # Home page
-    return render_template('index.html')
+    return render_template('index.html', display_products="none", loading_status="none")
 
 @app.route('/', methods=['POST'])
 def form():
     age = request.form['age']
     gender = request.form['gender']
+    
     categories = predictions.predict(age,gender)
 
     # Removes spaces in categories
@@ -49,9 +50,9 @@ def form():
     products = webscrapping.find_products(categories, budget, interests)
     # Removes spaces in categories ^^^
 
-    print(products)
+    random.shuffle(products) # Shuffles the products
 
-    return render_template('index.html', products=products)
+    return render_template('index.html', display_products="block", products=products, loading_status="none")
 
 if __name__ == "__main__":  
 	app.run( 
