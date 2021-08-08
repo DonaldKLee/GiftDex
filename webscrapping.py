@@ -14,8 +14,6 @@ def find_products(categories, budget, interests):
                 new_categories.append(interest + " " + category)
 
         categories = new_categories
-        print(categories)
-        print("Yes interest")
 
     else:
         print("no interests")

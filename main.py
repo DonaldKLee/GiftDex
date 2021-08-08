@@ -1,4 +1,4 @@
-import random, os
+import random, os, concurrent.futures
 from flask import Flask, render_template, url_for, request
 
 import modeltrainer, predictions, webscrapping
@@ -26,14 +26,18 @@ def dated_url_for(endpoint, **values):
 
 @app.route('/')
 def index(): # Home page
-    return render_template('index.html', display_products="none", loading_status="none")
+    return render_template('index.html', display_products="none", length=None, loading_status="none")
 
 @app.route('/', methods=['POST'])
 def form():
     age = request.form['age']
     gender = request.form['gender']
     
-    categories = predictions.predict(age,gender)
+    with concurrent.futures.ThreadPoolExecutor() as executor:
+          #Runs the predict function from "predictions.py" and set the return varible to "categories"
+          categories = executor.submit(predictions.predict, age, gender).result()
+
+    #categories = predictions.predict(age,gender)
 
     # Removes spaces in categories
     cleaned_categories = []
@@ -47,12 +51,16 @@ def form():
     if interests:
         interests = interests.split(',')
 
-    products = webscrapping.find_products(categories, budget, interests)
+
+    with concurrent.futures.ThreadPoolExecutor() as executor:
+        products = executor.submit(webscrapping.find_products, categories, budget, interests).result()
+    
+    #products = webscrapping.find_products(categories, budget, interests)
     # Removes spaces in categories ^^^
 
     random.shuffle(products) # Shuffles the products
 
-    return render_template('index.html', display_products="block", products=products, loading_status="none")
+    return render_template('index.html', display_products="block", products=products, length=int(len(products)+1), loading_status="none")
 
 if __name__ == "__main__":  
 	app.run( 

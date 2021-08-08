@@ -1,12 +1,10 @@
 <style>
-
     .bottom_page {
         position: relative;
         top: 200px;
         width: 100vw;
         height: auto;
         overflow-x: hidden;
-        overflow-y:hidden;
         display: {{display_products}};
     }
 
@@ -27,10 +25,10 @@
 
     @keyframes locating {
         0% { top:0px; left:10%}
-        25% { top: 200px; left:80%; }
-        50% { top: -200px; left:30%; }
-        75% { top: 140px; left:80%; }
-        100% { top: 200px; left:10%; }
+        25% { top: 60%; left:80%; }
+        50% { top: 80%; left:30%; }
+        75% { top: 50%; left:60%; }
+        100% { top: 0%; left:10%; }
     }
 </style>
 
@@ -43,11 +41,12 @@
     <link rel="shortcut icon" href="{{ url_for('static', filename='logo.png') }}">
 
     <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Single Day' rel='stylesheet'>
+    
     <link rel="stylesheet" href="{{ url_for('static', filename="home.css") }}">
     
     <!--Font Awesome-->
     <script src="https://kit.fontawesome.com/ba7447c34f.js" crossorigin="anonymous"></script>
-
 </head>
 
 <body>
@@ -63,15 +62,19 @@
     <div class="right">
         
         <form action="{{ url_for('form') }}" method="POST" onsubmit="showloading()">
-            <label class="form_label">Age</label></br><input type="number" class="text_box" min="0" max="120" step="1" name="age" value="" id="age" placeholder="20"/ required>
+            <label class="form_label">What's their age?</label></br><input type="number" class="text_box" min="0" max="120" step="1" name="age" value="" id="age" placeholder="18"/ required>
             </br></br>
-            <label class="form_label">Budget</label></br><label class="form_label">$ </label><input type="number" class="text_box" min="5" step="1" id="budget" name="budget" value="" placeholder="10"/ required>
+            <label class="form_label">What's your budget?</label></br>
+            
+            <label class="form_label2" style="">$ </label>
+            <input " type="number" class="text_box" style="" min="5" step="1" id="budget" name="budget" value="" placeholder="20"/ required>
+           
             
             
-            <p class="form_label">Gender</p>
+            <p class="form_label">What's their Gender?</p>
     
             <select class="text_box" name="gender" id="gender" required>
-                <option value="">Select your gender</option>
+                <option value="">Select their gender</option>
                 <option name="gender" value="1">Male</option>
                 <option name="gender" value="0">Female</option>
                 <option name="gender" value="3">Other</option>
@@ -80,7 +83,7 @@
 
             </br></br></br>
 
-            <label class="form_label">What is something they like? (Seperate interests with commas)</label></br><input type="text" class="text_box" name="interests" value="" placeholder="Anime, Headphones"/>
+            <label class="form_label">Optional: What is something they like? (Seperate interests with commas)</label></br><input type="text" class="text_box" name="interests" value="" placeholder="Anime, Headphones"/>
             
             </br></br>
             <input type="submit" id="submit_form" class="submit_button" name="submit" value="Find Gifts for me!" />
@@ -91,7 +94,7 @@
         <div id="loading" class="loader">
             <i class="fas fa-search searcher"></i>
             <div class="wait_container">
-            <p class="wait">Finding the prefect gift takes time! This could take up to a few seconds! Please wait!</p>
+            <p class="wait">Finding the perfect gift takes time, this could take up to a few seconds :)</p>
             </div>
         </div>
 
@@ -103,18 +106,67 @@
     <div class="products_container">
     {% if products %}
         {% for product in products %}
-            <div class="product">
-                <p>{{ product['name'] }}</p>
-                <a href="{{ product['url'] }}" target="_blank">View Site</a>
-                <p>{{ product['price'] }}</p>
+            <div class="product" style="display:none;" id="product_{{ loop.index }}">
+                
+                <div class="product_photo">
+                    <i class="fas fa-gift gift_box"></i>
+                </div>
+
+                <div class="product_info">
+                    <p class="product_name">{{ product['name'] }}</p>
+                  
+                    <a href="{{ product['url'] }}" target="_blank" class="view_link_button">View Store</a>
+              
+                    <p class="price">{{ product['price'] }}</p>
+                </div>
             </div>
         {% endfor %}
     {% endif %}
     </div>
-
+    <button class="reroll" onclick="reroll()">Reroll</button>
+    
 </div>
 
   <!--Javascript-->
+
+<script> // Allows user to reroll their recommendations
+    var products = []
+    var hide = []
+    function reroll() {
+        for (let to_hide = 0; to_hide < hide.length; to_hide++) {
+            var div = document.getElementById("product_" + hide[to_hide]);
+            div.style.display = "none";
+        }
+        for (let product = 0; product < 3; product++) {
+            var div = document.getElementById("product_" + products[product]);
+            hide.push(products[product])
+            products.shift(products[product])
+            div.style.display = "block";
+        }
+    }
+</script>
+
+    {% if products %}
+    <script>
+        for (let product = 1; product < {{length}}; product++) {
+            var div = document.getElementById("product_" + product);
+            // Add all project id to a list
+            if (product < 4) {
+                hide.push(product)
+                div.style.display = "block";
+            }
+            else {
+                products.push(product);
+            }
+        }
+        
+            // Choose 3 random project id
+
+            
+            // Display them
+    </script>
+    {% endif %}
+
   <script>
     //Checks if the user presses enter on the form
     link_enter.addEventListener("keyup", function(event) {
